@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-dark: #100416;
+  --color-dark-secondary: #1a0824;
+  --color-purple: #351b48;
+  --color-purple-deep: #240b35;
+
+  --color-pink: #f000b8;
+  --color-magenta: #ff28c8;
+
+  --color-light: #f8f0f7;
+  --color-light-surface: #f4eaf3;
+
+  --color-white: #ffffff;
+  --color-text-dark: #170d20;
+  --color-text-secondary: #bdafc3;
+
+  --color-border-light: #c8b4cd;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-dark);
+    color: var(--color-white);
+    font-family: var(--font-sans), Inter, Manrope, system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Visible focus states for keyboard navigation. */
+  :focus-visible {
+    outline: 2px solid var(--color-magenta);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .mask-fade-left {
+    -webkit-mask-image: linear-gradient(to right, transparent, #000 45%);
+    mask-image: linear-gradient(to right, transparent, #000 45%);
+  }
+}
+
+/* Respect reduced-motion: cut continuous / long animations, keep content usable. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
