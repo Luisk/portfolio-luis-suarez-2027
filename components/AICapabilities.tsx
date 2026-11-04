@@ -38,7 +38,7 @@ export function AICapabilities() {
             variants={softRevealVariants}
             className="mt-4 text-[clamp(2rem,4.5vw,3.25rem)] font-black leading-[1.03] tracking-tight"
           >
-            From intelligent concepts to working products.
+            From concepts to working products.
           </motion.h2>
           <motion.p
             variants={softRevealVariants}

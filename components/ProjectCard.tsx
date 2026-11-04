@@ -1,9 +1,9 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { AnimatePresence, motion } from 'framer-motion';
 import Image from 'next/image';
-import { ArrowUpRight } from 'lucide-react';
-import { useState } from 'react';
+import { ArrowUpRight, Loader2 } from 'lucide-react';
+import { useEffect, useRef, useState } from 'react';
 import type { Project } from '@/lib/projects';
 import { revealVariants } from '@/lib/motion';
 
@@ -20,15 +20,35 @@ interface ProjectCardProps {
  */
 export function ProjectCard({ project, priority = false }: ProjectCardProps) {
   const [imageError, setImageError] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const isFull = project.span === 'full';
 
   const href = project.pdfUrl ?? '#';
   const hasPdf = project.pdfUrl !== null;
 
+  // Show a brief "opening" state when the card is clicked, since large PDFs
+  // take a moment to open in the new tab. Auto-clears so a returning user
+  // doesn't see a stuck spinner.
+  useEffect(() => {
+    return () => {
+      if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    };
+  }, []);
+
+  const handleClick = () => {
+    if (!hasPdf) return;
+    setLoading(true);
+    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+    timeoutRef.current = setTimeout(() => setLoading(false), 2500);
+  };
+
   return (
     <motion.a
       variants={revealVariants}
       href={href}
+      onClick={handleClick}
+      aria-busy={loading}
       target={hasPdf ? '_blank' : undefined}
       rel={hasPdf ? 'noopener noreferrer' : undefined}
       aria-label={`${project.title} — ${project.description}${hasPdf ? ' (opens case study PDF in a new tab)' : ''}`}
@@ -39,6 +59,26 @@ export function ProjectCard({ project, priority = false }: ProjectCardProps) {
         isFull ? 'min-h-[300px] sm:min-h-[340px]' : 'min-h-[260px] sm:min-h-[300px]',
       ].join(' ')}
     >
+      {/* PDF loading overlay */}
+      <AnimatePresence>
+        {loading && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.2 }}
+            className="absolute inset-0 z-20 flex flex-col items-center justify-center gap-3 bg-dark/70 backdrop-blur-sm"
+            role="status"
+            aria-live="polite"
+          >
+            <Loader2 className="h-8 w-8 animate-spin text-magenta" aria-hidden />
+            <span className="text-sm font-medium text-white/90">
+              Opening case study…
+            </span>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       {/* Background image (or brand-palette fallback if asset missing) */}
       <div className="absolute inset-0 -z-10">
         {!imageError ? (

@@ -13,6 +13,7 @@ import { SystemDiagram } from './SystemDiagram';
  */
 
 const statusStyles: Record<ProjectStatus, string> = {
+  Launched: 'bg-magenta text-white border-magenta',
   Implemented: 'bg-magenta/20 text-magenta border-magenta/40',
   'Functional Prototype': 'bg-magenta/15 text-magenta border-magenta/35',
   'In Development': 'bg-white/10 text-white/80 border-white/25',

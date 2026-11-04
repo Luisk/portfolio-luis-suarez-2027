@@ -23,10 +23,11 @@ export interface SiteConfig {
     url: string;
   };
   links: {
-    /** TODO: replace with the real LinkedIn profile URL. */
     linkedin: string;
-    /** TODO: replace with the real contact destination (mailto: or form URL). */
+    /** Contact destination (mailto: or form URL). */
     contact: string;
+    /** Path to the downloadable CV under /public. */
+    cv: string;
   };
 }
 
@@ -40,12 +41,13 @@ export const siteConfig: SiteConfig = {
     'I design and build intelligent digital experiences, combining product strategy, human-centered design, AI models, agentic workflows, and frontend engineering.',
   location: 'Manizales, Colombia',
   website: {
-    label: 'luissuarezux.com',
-    // Derived from the footer label in the brief. Adjust if the canonical URL differs.
-    url: 'https://luissuarezux.com',
+    label: 'luissuarezuxc.com',
+    url: 'https://luissuarezuxc.com',
   },
   links: {
     linkedin: 'https://www.linkedin.com/in/luis-suarezux/',
     contact: 'mailto:luisksuarez@gmail.com',
+    /** CV lives in public/docs so it ships in the static export. */
+    cv: '/docs/luis-suarez-cv-2026-1.pdf',
   },
 };

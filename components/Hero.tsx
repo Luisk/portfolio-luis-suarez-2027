@@ -79,8 +79,7 @@ export function Hero() {
           animate="visible"
           className="mt-7 max-w-[42ch] text-base text-white/75 sm:text-lg"
         >
-          Connecting product thinking, experience design, AI systems, and
-          technology.
+          Connecting product thinking, experience design and AI systems.
         </motion.p>
 
         <motion.p

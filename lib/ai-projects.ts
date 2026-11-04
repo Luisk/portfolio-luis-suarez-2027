@@ -25,6 +25,7 @@ export type ProjectStatus =
   | 'Functional Prototype'
   | 'In Development'
   | 'Implemented'
+  | 'Launched'
   | 'Exploration';
 
 export interface AIProject {
@@ -48,8 +49,8 @@ export interface AIProject {
 export const aiProjects: AIProject[] = [
   {
     number: '01',
-    name: 'Mila AI Business Advisor',
-    status: 'Exploration',
+    name: 'AI Business Advisor',
+    status: 'Functional Prototype',
     purpose:
       'An AI business advisor that reads a company’s context, goals, and capacity to surface its next best opportunity.',
     question:
@@ -68,7 +69,7 @@ export const aiProjects: AIProject[] = [
   {
     number: '02',
     name: 'Autonomous UX/UI Design Agent',
-    status: 'Functional Prototype',
+    status: 'Exploration',
     purpose:
       'A staged, human-in-the-loop agent that moves a brief through problem analysis to delivery, parking at an approval gate between each stage.',
     question:
@@ -88,21 +89,26 @@ export const aiProjects: AIProject[] = [
   },
   {
     number: '03',
-    name: 'AI Restaurant Growth Copilot',
-    status: 'Exploration',
+    name: 'WRG Elite — Algorithmic Trading & Capital Protection Engine',
+    status: 'Launched',
     purpose:
-      'A conversational growth assistant exploring how to help restaurant owners spot opportunities and coordinate marketing actions.',
+      'An advanced algorithmic trading system that identifies market opportunities, executes systematic strategies, and actively manages trade- and portfolio-level risk — combining market structure analysis, AMD, session intelligence, multi-factor entry validation, and automated execution with a dedicated Capital Protection Framework.',
     question:
-      'How can an AI assistant move beyond recommendations and help business owners execute meaningful growth actions?',
+      'How can an algorithmic trading system improve trade selection, manage losing positions intelligently, and protect trading capital while preserving high-quality winning opportunities?',
     capabilities: [
-      'Conversational AI',
-      'Business context',
-      'Persistent memory',
-      'External integrations',
-      'Marketing workflow orchestration',
-      'Human approval & oversight',
+      'AMD & Market Structure Intelligence',
+      'Multi-Factor Entry Validation',
+      'Session & 24×5 Market Analysis',
+      'Automated Execution & Risk Sizing',
+      'Dynamic Stop Loss, Break-Even & Trailing',
+      'Capital Protection Framework (CPF)',
+      'Decision Confidence Engine (DCE)',
+      'Trade Quality Scoring (TQS)',
+      'Performance Analytics & Trade Journaling',
+      'Modular Architecture & Cross-Platform Development',
     ],
-    providerNote: 'Model-agnostic · multi-provider by design',
+    providerNote:
+      'C# / cTrader Automate · MQL5 / MetaTrader 5 · Modular algorithmic architecture',
     diagram: 'copilot',
   },
 ];

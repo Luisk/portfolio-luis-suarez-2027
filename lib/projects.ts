@@ -76,10 +76,7 @@ export const projects: Project[] = [
     image: '/images/visa.jpg',
     imageAlt:
       'The Visa wordmark on a purple financial-themed backdrop with a glowing light streak.',
-    // ASSET STATUS: visa.pdf was not present in public/projects (nascar, phocas,
-    // and shark-tank PDFs are). Set to null so the card stays clickable without
-    // a 404. Drop public/projects/visa.pdf and change this back to that path.
-    pdfUrl: null,
+    pdfUrl: '/projects/visa.pdf',
     span: 'full',
     imagePosition: 'object-right',
   },
